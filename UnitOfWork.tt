@@ -1,0 +1,116 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+var loader = new MetadataLoader(this);
+var region = new CodeRegion(this);
+var inputFile = @"..\DAL\Model.edmx";
+var ItemCollection = loader.CreateEdmItemCollection(inputFile);
+
+Code = new CodeGenerationTools(this);
+EFTools = new MetadataTools(this);
+ObjectNamespace = Code.VsNamespaceSuggestion();
+ModelNamespace = loader.GetModelNamespace(inputFile);
+
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+if (container == null)
+{
+    return string.Empty;
+}#>
+namespace DAL
+{       
+    using System;
+    using System.ComponentModel.Composition;
+    using Entities;
+	
+    [Export(typeof(IUnitOfWork)), PartCreationPolicy(CreationPolicy.NonShared)]
+    public partial class UnitOfWork : IUnitOfWork, IDisposable
+    {
+        #region Private Variables
+        
+        private <#=Code.Escape(container)#> context = null;
+        private bool disposed = false;
+<#
+    foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
+    {
+#>
+        private I<#=Code.Escape(entitySet.ElementType)#>Repository <#=Code.Escape(entitySet.ElementType).ToLower()#>Repository;
+<# 
+    }
+#>
+
+        #endregion        
+        
+        #region Constructors
+
+        [ImportingConstructor]
+        public UnitOfWork()
+        {
+            this.context = new <#=Code.Escape(container)#>();
+        }
+
+        #endregion
+
+        #region Public Properties
+<#
+    foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
+    {
+#>
+
+        public I<#=Code.Escape(entitySet.ElementType)#>Repository <#=Code.Escape(entitySet.ElementType)#>Repository
+        {
+            get
+            {
+                if (this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository == null)
+                {
+                    this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository = new <#= Code.Escape(entitySet.ElementType) #>Repository(this.context);
+                }
+                
+                return this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository; 
+            }
+        }
+<# 
+    }
+#>
+
+        #endregion
+
+        #region Public Methods
+        
+        public void Commit()
+        {
+             this.context.SaveChanges();
+        }
+        
+        public void Dispose()
+        {
+             this.Dispose(true);
+             GC.SuppressFinalize(this);
+        }
+		
+        #endregion
+        
+        #region Proptected Virtual Methods
+        
+        protected virtual void Dispose(bool disposing)
+        {
+             if (!this.disposed)
+             {
+                 if (disposing)
+                 {
+                     this.context.Dispose();
+                 }
+             }
+            
+             this.disposed = true;
+         }
+        
+        #endregion
+    }
+}
+<#+
+string ModelNamespace { get; set; }
+string ObjectNamespace { get; set; }
+CodeGenerationTools Code { get; set; }
+MetadataTools EFTools { get; set; }
+#>

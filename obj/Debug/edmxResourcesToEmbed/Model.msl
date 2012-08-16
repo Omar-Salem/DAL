@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FA31SalesDemoModelStoreContainer" CdmEntityContainer="FA31SalesDemoEntities">
+    <EntitySetMapping Name="AuditedOperations">
+      <EntityTypeMapping TypeName="FA31SalesDemoModel.AuditedOperation">
+        <MappingFragment StoreEntitySet="AuditedOperations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReceivedTime" ColumnName="ReceivedTime" />
+          <ScalarProperty Name="UserSID" ColumnName="UserSID" />
+          <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+          <ScalarProperty Name="UserDomain" ColumnName="UserDomain" />
+          <ScalarProperty Name="OwnerSID" ColumnName="OwnerSID" />
+          <ScalarProperty Name="OwnerAccount" ColumnName="OwnerAccount" />
+          <ScalarProperty Name="OwnerDomain" ColumnName="OwnerDomain" />
+          <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+          <ScalarProperty Name="FullPathName" ColumnName="FullPathName" />
+          <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="RenameToPath" ColumnName="RenameToPath" />
+          <ScalarProperty Name="RenamedObjectName" ColumnName="RenamedObjectName" />
+          <ScalarProperty Name="RenamedFileType" ColumnName="RenamedFileType" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="DeltaSize" ColumnName="DeltaSize" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="ShareName" ColumnName="ShareName" />
+          <ScalarProperty Name="ClientMachineIP" ColumnName="ClientMachineIP" />
+          <ScalarProperty Name="ClientMachineName" ColumnName="ClientMachineName" />
+          <ScalarProperty Name="PrevOwnerSID" ColumnName="PrevOwnerSID" />
+          <ScalarProperty Name="PrevOwnerAccount" ColumnName="PrevOwnerAccount" />
+          <ScalarProperty Name="PrevOwnerDomain" ColumnName="PrevOwnerDomain" />
+          <ScalarProperty Name="DaclID" ColumnName="DaclID" />
+          <ScalarProperty Name="PrevDaclID" ColumnName="PrevDaclID" />
+          <ScalarProperty Name="IsDir" ColumnName="IsDir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

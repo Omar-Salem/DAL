@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FA31SalesDemoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="FA31SalesDemoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AuditedOperations" EntityType="FA31SalesDemoModel.AuditedOperation" />
+  </EntityContainer>
+  <EntityType Name="AuditedOperation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceivedTime" Type="DateTime" />
+    <Property Name="UserSID" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="UserAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="UserDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="OwnerSID" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="OwnerAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="OwnerDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="OperationType" Type="Int16" />
+    <Property Name="FullPathName" Type="String" MaxLength="1500" Unicode="true" FixedLength="false" />
+    <Property Name="ObjectName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="FileType" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="RenameToPath" Type="String" MaxLength="1500" Unicode="true" FixedLength="false" />
+    <Property Name="RenamedObjectName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="RenamedFileType" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="ServerName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="FileSize" Type="Int64" />
+    <Property Name="DeltaSize" Type="Int64" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="PolicyName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="ShareName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="ClientMachineIP" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ClientMachineName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="PrevOwnerSID" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PrevOwnerAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="PrevOwnerDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="DaclID" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="PrevDaclID" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <Property Name="IsDir" Type="Boolean" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FA31SalesDemoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FA31SalesDemoModelStoreContainer">
+    <EntitySet Name="AuditedOperations" EntityType="FA31SalesDemoModel.Store.AuditedOperations" store:Type="Tables" store:Schema="dbo" store:Name="AuditedOperations">
+      <DefiningQuery>SELECT 
+      [AuditedOperations].[ID] AS [ID], 
+      [AuditedOperations].[ReceivedTime] AS [ReceivedTime], 
+      [AuditedOperations].[UserSID] AS [UserSID], 
+      [AuditedOperations].[UserAccount] AS [UserAccount], 
+      [AuditedOperations].[UserDomain] AS [UserDomain], 
+      [AuditedOperations].[OwnerSID] AS [OwnerSID], 
+      [AuditedOperations].[OwnerAccount] AS [OwnerAccount], 
+      [AuditedOperations].[OwnerDomain] AS [OwnerDomain], 
+      [AuditedOperations].[OperationType] AS [OperationType], 
+      [AuditedOperations].[FullPathName] AS [FullPathName], 
+      [AuditedOperations].[ObjectName] AS [ObjectName], 
+      [AuditedOperations].[FileType] AS [FileType], 
+      [AuditedOperations].[RenameToPath] AS [RenameToPath], 
+      [AuditedOperations].[RenamedObjectName] AS [RenamedObjectName], 
+      [AuditedOperations].[RenamedFileType] AS [RenamedFileType], 
+      [AuditedOperations].[ServerName] AS [ServerName], 
+      [AuditedOperations].[FileSize] AS [FileSize], 
+      [AuditedOperations].[DeltaSize] AS [DeltaSize], 
+      [AuditedOperations].[Status] AS [Status], 
+      [AuditedOperations].[PolicyName] AS [PolicyName], 
+      [AuditedOperations].[ShareName] AS [ShareName], 
+      [AuditedOperations].[ClientMachineIP] AS [ClientMachineIP], 
+      [AuditedOperations].[ClientMachineName] AS [ClientMachineName], 
+      [AuditedOperations].[PrevOwnerSID] AS [PrevOwnerSID], 
+      [AuditedOperations].[PrevOwnerAccount] AS [PrevOwnerAccount], 
+      [AuditedOperations].[PrevOwnerDomain] AS [PrevOwnerDomain], 
+      [AuditedOperations].[DaclID] AS [DaclID], 
+      [AuditedOperations].[PrevDaclID] AS [PrevDaclID], 
+      [AuditedOperations].[IsDir] AS [IsDir]
+      FROM [dbo].[AuditedOperations] AS [AuditedOperations]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'FA31SalesDemo.dbo.AuditedOperations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="AuditedOperations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ReceivedTime" Type="datetime" />
+    <Property Name="UserSID" Type="varchar" MaxLength="64" />
+    <Property Name="UserAccount" Type="nvarchar" MaxLength="256" />
+    <Property Name="UserDomain" Type="nvarchar" MaxLength="256" />
+    <Property Name="OwnerSID" Type="varchar" MaxLength="64" />
+    <Property Name="OwnerAccount" Type="nvarchar" MaxLength="256" />
+    <Property Name="OwnerDomain" Type="nvarchar" MaxLength="256" />
+    <Property Name="OperationType" Type="smallint" />
+    <Property Name="FullPathName" Type="nvarchar" MaxLength="1500" />
+    <Property Name="ObjectName" Type="nvarchar" MaxLength="256" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="256" />
+    <Property Name="RenameToPath" Type="nvarchar" MaxLength="1500" />
+    <Property Name="RenamedObjectName" Type="nvarchar" MaxLength="256" />
+    <Property Name="RenamedFileType" Type="nvarchar" MaxLength="256" />
+    <Property Name="ServerName" Type="nvarchar" MaxLength="256" />
+    <Property Name="FileSize" Type="bigint" />
+    <Property Name="DeltaSize" Type="bigint" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="PolicyName" Type="nvarchar" MaxLength="256" />
+    <Property Name="ShareName" Type="nvarchar" MaxLength="256" />
+    <Property Name="ClientMachineIP" Type="varchar" MaxLength="50" />
+    <Property Name="ClientMachineName" Type="nvarchar" MaxLength="256" />
+    <Property Name="PrevOwnerSID" Type="varchar" MaxLength="100" />
+    <Property Name="PrevOwnerAccount" Type="nvarchar" MaxLength="256" />
+    <Property Name="PrevOwnerDomain" Type="nvarchar" MaxLength="256" />
+    <Property Name="DaclID" Type="varchar" MaxLength="32" />
+    <Property Name="PrevDaclID" Type="varchar" MaxLength="32" />
+    <Property Name="IsDir" Type="bit" />
+  </EntityType>
+</Schema>

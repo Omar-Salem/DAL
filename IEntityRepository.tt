@@ -1,0 +1,45 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+var loader = new MetadataLoader(this);
+var region = new CodeRegion(this);
+var inputFile = @"Model.edmx";
+var ItemCollection = loader.CreateEdmItemCollection(inputFile);
+
+Code = new CodeGenerationTools(this);
+EFTools = new MetadataTools(this);
+ObjectNamespace = Code.VsNamespaceSuggestion();
+ModelNamespace = "DAL";
+ModelName = loader.GetModelNamespace(inputFile);
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+if (container == null)
+{
+    return string.Empty;
+}
+#>
+namespace DAL
+{
+    using System;
+	using Entities;
+<# 
+    foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
+    {
+#>
+
+    public partial interface I<#=Code.Escape(entitySet.ElementType)#>Repository : IGenericRepository<<#=Code.Escape(entitySet.ElementType)#>>
+    {
+    }
+<# 
+    }
+#>
+}
+<#+
+string ModelNamespace { get; set; }
+string ModelName { get; set; }
+string ObjectNamespace { get; set; }
+CodeGenerationTools Code { get; set; }
+MetadataTools EFTools { get; set; }
+#>
+
+

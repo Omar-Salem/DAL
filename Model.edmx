@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FA31SalesDemoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FA31SalesDemoModelStoreContainer">
+          <EntitySet Name="AuditedOperations" EntityType="FA31SalesDemoModel.Store.AuditedOperations" store:Type="Tables" store:Schema="dbo" store:Name="AuditedOperations">
+            <DefiningQuery>SELECT 
+      [AuditedOperations].[ID] AS [ID], 
+      [AuditedOperations].[ReceivedTime] AS [ReceivedTime], 
+      [AuditedOperations].[UserSID] AS [UserSID], 
+      [AuditedOperations].[UserAccount] AS [UserAccount], 
+      [AuditedOperations].[UserDomain] AS [UserDomain], 
+      [AuditedOperations].[OwnerSID] AS [OwnerSID], 
+      [AuditedOperations].[OwnerAccount] AS [OwnerAccount], 
+      [AuditedOperations].[OwnerDomain] AS [OwnerDomain], 
+      [AuditedOperations].[OperationType] AS [OperationType], 
+      [AuditedOperations].[FullPathName] AS [FullPathName], 
+      [AuditedOperations].[ObjectName] AS [ObjectName], 
+      [AuditedOperations].[FileType] AS [FileType], 
+      [AuditedOperations].[RenameToPath] AS [RenameToPath], 
+      [AuditedOperations].[RenamedObjectName] AS [RenamedObjectName], 
+      [AuditedOperations].[RenamedFileType] AS [RenamedFileType], 
+      [AuditedOperations].[ServerName] AS [ServerName], 
+      [AuditedOperations].[FileSize] AS [FileSize], 
+      [AuditedOperations].[DeltaSize] AS [DeltaSize], 
+      [AuditedOperations].[Status] AS [Status], 
+      [AuditedOperations].[PolicyName] AS [PolicyName], 
+      [AuditedOperations].[ShareName] AS [ShareName], 
+      [AuditedOperations].[ClientMachineIP] AS [ClientMachineIP], 
+      [AuditedOperations].[ClientMachineName] AS [ClientMachineName], 
+      [AuditedOperations].[PrevOwnerSID] AS [PrevOwnerSID], 
+      [AuditedOperations].[PrevOwnerAccount] AS [PrevOwnerAccount], 
+      [AuditedOperations].[PrevOwnerDomain] AS [PrevOwnerDomain], 
+      [AuditedOperations].[DaclID] AS [DaclID], 
+      [AuditedOperations].[PrevDaclID] AS [PrevDaclID], 
+      [AuditedOperations].[IsDir] AS [IsDir]
+      FROM [dbo].[AuditedOperations] AS [AuditedOperations]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FA31SalesDemo.dbo.AuditedOperations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="AuditedOperations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReceivedTime" Type="datetime" />
+          <Property Name="UserSID" Type="varchar" MaxLength="64" />
+          <Property Name="UserAccount" Type="nvarchar" MaxLength="256" />
+          <Property Name="UserDomain" Type="nvarchar" MaxLength="256" />
+          <Property Name="OwnerSID" Type="varchar" MaxLength="64" />
+          <Property Name="OwnerAccount" Type="nvarchar" MaxLength="256" />
+          <Property Name="OwnerDomain" Type="nvarchar" MaxLength="256" />
+          <Property Name="OperationType" Type="smallint" />
+          <Property Name="FullPathName" Type="nvarchar" MaxLength="1500" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="256" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="256" />
+          <Property Name="RenameToPath" Type="nvarchar" MaxLength="1500" />
+          <Property Name="RenamedObjectName" Type="nvarchar" MaxLength="256" />
+          <Property Name="RenamedFileType" Type="nvarchar" MaxLength="256" />
+          <Property Name="ServerName" Type="nvarchar" MaxLength="256" />
+          <Property Name="FileSize" Type="bigint" />
+          <Property Name="DeltaSize" Type="bigint" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="PolicyName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ShareName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ClientMachineIP" Type="varchar" MaxLength="50" />
+          <Property Name="ClientMachineName" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrevOwnerSID" Type="varchar" MaxLength="100" />
+          <Property Name="PrevOwnerAccount" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrevOwnerDomain" Type="nvarchar" MaxLength="256" />
+          <Property Name="DaclID" Type="varchar" MaxLength="32" />
+          <Property Name="PrevDaclID" Type="varchar" MaxLength="32" />
+          <Property Name="IsDir" Type="bit" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FA31SalesDemoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FA31SalesDemoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditedOperations" EntityType="FA31SalesDemoModel.AuditedOperation" />
+        </EntityContainer>
+        <EntityType Name="AuditedOperation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceivedTime" Type="DateTime" />
+          <Property Name="UserSID" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="UserAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="UserDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="OwnerSID" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="OwnerAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="OwnerDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="OperationType" Type="Int16" />
+          <Property Name="FullPathName" Type="String" MaxLength="1500" Unicode="true" FixedLength="false" />
+          <Property Name="ObjectName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="FileType" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="RenameToPath" Type="String" MaxLength="1500" Unicode="true" FixedLength="false" />
+          <Property Name="RenamedObjectName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="RenamedFileType" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ServerName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="FileSize" Type="Int64" />
+          <Property Name="DeltaSize" Type="Int64" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="PolicyName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ShareName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ClientMachineIP" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ClientMachineName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PrevOwnerSID" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PrevOwnerAccount" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PrevOwnerDomain" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="DaclID" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="PrevDaclID" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="IsDir" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FA31SalesDemoModelStoreContainer" CdmEntityContainer="FA31SalesDemoEntities">
+          <EntitySetMapping Name="AuditedOperations"><EntityTypeMapping TypeName="FA31SalesDemoModel.AuditedOperation"><MappingFragment StoreEntitySet="AuditedOperations">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ReceivedTime" ColumnName="ReceivedTime" />
+            <ScalarProperty Name="UserSID" ColumnName="UserSID" />
+            <ScalarProperty Name="UserAccount" ColumnName="UserAccount" />
+            <ScalarProperty Name="UserDomain" ColumnName="UserDomain" />
+            <ScalarProperty Name="OwnerSID" ColumnName="OwnerSID" />
+            <ScalarProperty Name="OwnerAccount" ColumnName="OwnerAccount" />
+            <ScalarProperty Name="OwnerDomain" ColumnName="OwnerDomain" />
+            <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+            <ScalarProperty Name="FullPathName" ColumnName="FullPathName" />
+            <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+            <ScalarProperty Name="FileType" ColumnName="FileType" />
+            <ScalarProperty Name="RenameToPath" ColumnName="RenameToPath" />
+            <ScalarProperty Name="RenamedObjectName" ColumnName="RenamedObjectName" />
+            <ScalarProperty Name="RenamedFileType" ColumnName="RenamedFileType" />
+            <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+            <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+            <ScalarProperty Name="DeltaSize" ColumnName="DeltaSize" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+            <ScalarProperty Name="ShareName" ColumnName="ShareName" />
+            <ScalarProperty Name="ClientMachineIP" ColumnName="ClientMachineIP" />
+            <ScalarProperty Name="ClientMachineName" ColumnName="ClientMachineName" />
+            <ScalarProperty Name="PrevOwnerSID" ColumnName="PrevOwnerSID" />
+            <ScalarProperty Name="PrevOwnerAccount" ColumnName="PrevOwnerAccount" />
+            <ScalarProperty Name="PrevOwnerDomain" ColumnName="PrevOwnerDomain" />
+            <ScalarProperty Name="DaclID" ColumnName="DaclID" />
+            <ScalarProperty Name="PrevDaclID" ColumnName="PrevDaclID" />
+            <ScalarProperty Name="IsDir" ColumnName="IsDir" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="56">
+        <EntityTypeShape EntityType="FA31SalesDemoModel.AuditedOperation" Width="1.5" PointX="0.75" PointY="0.75" Height="6.5955208333333317" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
