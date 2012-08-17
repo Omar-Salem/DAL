@@ -10,7 +10,7 @@ namespace DAL
     {
         #region Private Variables
         
-        private TestEntities context = null;
+        private TestContext context = null;
         private bool disposed = false;
       
         private ICustomerRepository _customerRepository;
@@ -22,7 +22,7 @@ namespace DAL
         [ImportingConstructor]
         public UnitOfWork()
         {
-            this.context = new TestEntities();
+            this.context = new TestContext();
         }
 
         #endregion

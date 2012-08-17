@@ -10,7 +10,7 @@ namespace DAL
     public partial class customerRepository : GenericRepository<customer>, ICustomerRepository
     {
         [ImportingConstructor]
-        public customerRepository(TestEntities context)
+        public customerRepository(TestContext context)
             : base(context)
         {
         }

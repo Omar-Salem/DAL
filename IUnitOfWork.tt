@@ -4,7 +4,12 @@
 <#
 var loader = new MetadataLoader(this);
 var region = new CodeRegion(this);
-var inputFile = @"..\DAL\Model.edmx";
+//string inputFile = @"..\DAL\Model.edmx";
+DirectoryInfo dir = new DirectoryInfo(Host.ResolvePath(string.Empty));
+string[] entityFrameworkFiles = Directory.GetFiles(dir.Parent.FullName, "*.edmx", SearchOption.AllDirectories);
+var inputFile = entityFrameworkFiles.Length == 1 ? entityFrameworkFiles[0] : "";
+
+
 var ItemCollection = loader.CreateEdmItemCollection(inputFile);
 
 Code = new CodeGenerationTools(this);

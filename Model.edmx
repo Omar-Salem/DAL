@@ -20,7 +20,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TestModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="TestEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TestContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="customers" EntityType="TestModel.customer" />
         </EntityContainer>
         <EntityType Name="customer">
@@ -35,7 +35,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestEntities">
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestContext">
           <EntitySetMapping Name="customers"><EntityTypeMapping TypeName="TestModel.customer"><MappingFragment StoreEntitySet="customers">
             <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="name" ColumnName="name" />
