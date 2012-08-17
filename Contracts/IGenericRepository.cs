@@ -8,14 +8,16 @@ namespace DAL
 {
     public interface IGenericRepository<T> where T : class
     {
+        T GetById(int id);
+
         IEnumerable<T> GetAll();
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
 
         void Add(T entity);
 
-        void Delete(T entity);
-
         void Update(T entity);
+
+        void Delete(T entity);
     }
 }

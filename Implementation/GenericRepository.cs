@@ -14,7 +14,7 @@ namespace DAL
         where T : class
     {
         private readonly ObjectContext _context;
-        private readonly ObjectSet<T> _set;
+        private readonly IObjectSet<T> _set;
 
         public GenericRepository(ObjectContext objectContext)
         {
@@ -26,6 +26,13 @@ namespace DAL
         {
             get { return _context; }
         }
+
+        public IObjectSet<T> Set
+        {
+            get { return _set; }
+        }
+
+        public abstract T GetById(int id);
 
         public virtual IEnumerable<T> GetAll()
         {
@@ -44,15 +51,15 @@ namespace DAL
             _set.AddObject(entity);
         }
 
-        public virtual void Delete(T entity)
-        {
-            _set.DeleteObject(entity);
-        }
-
         public virtual void Update(T entity)
         {
             _set.Attach(entity);
             _context.ObjectStateManager.ChangeObjectState(entity, EntityState.Modified);
+        }
+
+        public virtual void Delete(T entity)
+        {
+            _set.DeleteObject(entity);
         }
     }
 }

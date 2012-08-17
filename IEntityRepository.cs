@@ -4,7 +4,7 @@ namespace DAL
     using System;
 	using Entities;
 
-    public partial interface IAuditedOperationRepository : IGenericRepository<AuditedOperation>
+    public partial interface ICustomerRepository : IGenericRepository<customer>
     {
     }
 }

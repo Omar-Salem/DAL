@@ -33,8 +33,10 @@ namespace DAL
 <#
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
-#>
-        private I<#=Code.Escape(entitySet.ElementType)#>Repository <#=Code.Escape(entitySet.ElementType).ToLower()#>Repository;
+	   var elementName = Code.Escape(entitySet.ElementType);
+       var interfaceName = char.ToUpper(elementName[0]) + elementName.Substring(1);
+#>      
+        private I<#=interfaceName#>Repository _<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository;
 <# 
     }
 #>
@@ -55,18 +57,21 @@ namespace DAL
 <#
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
+	   var elementName = Code.Escape(entitySet.ElementType);
+       var interfaceName = char.ToUpper(elementName[0]) + elementName.Substring(1);
 #>
-
-        public I<#=Code.Escape(entitySet.ElementType)#>Repository <#=Code.Escape(entitySet.ElementType)#>Repository
+<# 
+ #> 
+        public I<#=interfaceName#>Repository <#=Code.Escape(entitySet.ElementType)#>Repository
         {
             get
             {
-                if (this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository == null)
+                if (this._<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository == null)
                 {
-                    this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository = new <#= Code.Escape(entitySet.ElementType) #>Repository(this.context);
+                    this._<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository = new <#= Code.Escape(entitySet.ElementType) #>Repository(this.context);
                 }
                 
-                return this.<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository; 
+                return this._<#=Code.Escape(entitySet.ElementType).ToLower()#>Repository; 
             }
         }
 <# 

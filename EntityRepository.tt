@@ -20,18 +20,27 @@ namespace DAL
 {
     using System.ComponentModel.Composition;
     using Entities;
+	using System.Data;
+    using System.Linq;
 <# 
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
+	   var elementName = Code.Escape(entitySet.ElementType);
+	   var interfaceName = char.ToUpper(elementName[0]) + elementName.Substring(1);
 #>
 
-    [Export(typeof(I<#=Code.Escape(entitySet.ElementType)#>Repository)), PartCreationPolicy(CreationPolicy.NonShared)]
-    public partial class <#=Code.Escape(entitySet.ElementType)#>Repository : GenericRepository<<#=Code.Escape(entitySet.ElementType)#>>, I<#=Code.Escape(entitySet.ElementType)#>Repository
+    [Export(typeof(I<#=interfaceName#>Repository)), PartCreationPolicy(CreationPolicy.NonShared)]
+    public partial class <#=Code.Escape(entitySet.ElementType)#>Repository : GenericRepository<<#=Code.Escape(entitySet.ElementType)#>>, I<#=interfaceName#>Repository
     {
         [ImportingConstructor]
         public <#=Code.Escape(entitySet.ElementType)#>Repository(<#=Code.Escape(container)#> context)
             : base(context)
         {
+        }
+		
+		public override <#=Code.Escape(entitySet.ElementType)#> GetById(int id)
+        {
+            return Set.SingleOrDefault(e => e.ID == id);
         }        
     }
 <# 

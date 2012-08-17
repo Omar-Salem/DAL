@@ -25,9 +25,11 @@ namespace DAL
 <# 
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
+	    var elementName = Code.Escape(entitySet.ElementType);
+        var interfaceName = char.ToUpper(elementName[0]) + elementName.Substring(1);
 #>
 
-    public partial interface I<#=Code.Escape(entitySet.ElementType)#>Repository : IGenericRepository<<#=Code.Escape(entitySet.ElementType)#>>
+    public partial interface I<#=interfaceName#>Repository : IGenericRepository<<#=Code.Escape(entitySet.ElementType)#>>
     {
     }
 <# 

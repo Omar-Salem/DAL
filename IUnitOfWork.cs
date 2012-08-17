@@ -7,7 +7,7 @@ namespace DAL
     {
         #region Properties
 
-        IAuditedOperationRepository AuditedOperationRepository { get; }                
+        ICustomerRepository customerRepository { get; }                
 
         #endregion
         

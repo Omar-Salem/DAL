@@ -75,9 +75,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model.edmx" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="EntityRepository.tt">
       <SubType>Code</SubType>
@@ -96,6 +93,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnitOfWork.cs</LastGenOutput>
     </None>
+    <EntityDeploy Include="Model.edmx" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

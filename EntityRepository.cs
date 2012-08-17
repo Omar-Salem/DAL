@@ -3,14 +3,21 @@ namespace DAL
 {
     using System.ComponentModel.Composition;
     using Entities;
+	using System.Data;
+    using System.Linq;
 
-    [Export(typeof(IAuditedOperationRepository)), PartCreationPolicy(CreationPolicy.NonShared)]
-    public partial class AuditedOperationRepository : GenericRepository<AuditedOperation>, IAuditedOperationRepository
+    [Export(typeof(ICustomerRepository)), PartCreationPolicy(CreationPolicy.NonShared)]
+    public partial class customerRepository : GenericRepository<customer>, ICustomerRepository
     {
         [ImportingConstructor]
-        public AuditedOperationRepository(FA31SalesDemoEntities context)
+        public customerRepository(TestEntities context)
             : base(context)
         {
+        }
+		
+		public override customer GetById(int id)
+        {
+            return Set.SingleOrDefault(e => e.ID == id);
         }        
     }
 }

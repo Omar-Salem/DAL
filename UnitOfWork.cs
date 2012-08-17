@@ -10,9 +10,10 @@ namespace DAL
     {
         #region Private Variables
         
-        private FA31SalesDemoEntities context = null;
+        private TestEntities context = null;
         private bool disposed = false;
-        private IAuditedOperationRepository auditedoperationRepository;
+      
+        private ICustomerRepository _customerRepository;
 
         #endregion        
         
@@ -21,23 +22,23 @@ namespace DAL
         [ImportingConstructor]
         public UnitOfWork()
         {
-            this.context = new FA31SalesDemoEntities();
+            this.context = new TestEntities();
         }
 
         #endregion
 
         #region Public Properties
-
-        public IAuditedOperationRepository AuditedOperationRepository
+ 
+        public ICustomerRepository customerRepository
         {
             get
             {
-                if (this.auditedoperationRepository == null)
+                if (this._customerRepository == null)
                 {
-                    this.auditedoperationRepository = new AuditedOperationRepository(this.context);
+                    this._customerRepository = new customerRepository(this.context);
                 }
                 
-                return this.auditedoperationRepository; 
+                return this._customerRepository; 
             }
         }
 

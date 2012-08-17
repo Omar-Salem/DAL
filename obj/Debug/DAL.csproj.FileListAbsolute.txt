@@ -8,3 +8,13 @@ C:\Users\Omar\Desktop\Git\Session\DAL\bin\Debug\Entities.pdb
 C:\Users\Omar\Desktop\Git\Session\DAL\bin\Debug\EntityFramework.xml
 C:\Users\Omar\Desktop\Git\Session\DAL\obj\Debug\DAL.dll
 C:\Users\Omar\Desktop\Git\Session\DAL\obj\Debug\DAL.pdb
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\DAL.dll.config
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\DAL.dll
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\DAL.pdb
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\Entities.dll
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\Entities.pdb
+C:\Users\Omar\Desktop\Session\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Omar\Desktop\Session\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Omar\Desktop\Session\DAL\obj\Debug\DAL.dll
+C:\Users\Omar\Desktop\Session\DAL\obj\Debug\DAL.pdb
