@@ -14,10 +14,6 @@ namespace DAL
             : base(context)
         {
         }
-		
-		public override customer GetById(int id)
-        {
-            return Set.SingleOrDefault(e => e.ID == id);
-        }        
+		      
     }
 }

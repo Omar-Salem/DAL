@@ -56,26 +56,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityRepository.cs">
+    <Compile Include="Implementation\EntityRepository.cs">
       <DependentUpon>EntityRepository.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="IEntityRepository.cs">
+    <Compile Include="Contracts\IEntityRepository.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IEntityRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Implementation\GenericRepository.cs" />
-    <Compile Include="IUnitOfWork.cs">
+    <Compile Include="Contracts\IUnitOfWork.cs">
       <DependentUpon>IUnitOfWork.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitOfWork.cs">
+    <Compile Include="Implementation\UnitOfWork.cs">
       <DependentUpon>UnitOfWork.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
@@ -88,21 +88,21 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Context.cs</LastGenOutput>
     </None>
-    <None Include="EntityRepository.tt">
+    <None Include="Implementation\EntityRepository.tt">
       <SubType>Code</SubType>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityRepository.cs</LastGenOutput>
     </None>
-    <None Include="IEntityRepository.tt">
+    <None Include="Contracts\IEntityRepository.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IEntityRepository.cs</LastGenOutput>
     </None>
-    <None Include="IUnitOfWork.tt">
+    <None Include="Contracts\IUnitOfWork.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IUnitOfWork.cs</LastGenOutput>
     </None>
     <EntityDeploy Include="Model.edmx" />
-    <None Include="UnitOfWork.tt">
+    <None Include="Implementation\UnitOfWork.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UnitOfWork.cs</LastGenOutput>
     </None>

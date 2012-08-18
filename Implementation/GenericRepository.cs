@@ -9,7 +9,7 @@ using System.Data;
 
 namespace DAL
 {
-    public abstract class GenericRepository< T> :
+    public abstract class GenericRepository<T> :
     IGenericRepository<T>
         where T : class
     {
@@ -32,8 +32,6 @@ namespace DAL
             get { return _set; }
         }
 
-        public abstract T GetById(int id);
-
         public virtual IEnumerable<T> GetAll()
         {
             return _set;
@@ -41,9 +39,7 @@ namespace DAL
 
         public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-
-            IEnumerable<T> query = _set.Where(predicate);
-            return query;
+            return _set.Where(predicate);
         }
 
         public virtual void Add(T entity)

@@ -41,11 +41,7 @@ namespace DAL
             : base(context)
         {
         }
-		
-		public override <#=Code.Escape(entitySet.ElementType)#> GetById(int id)
-        {
-            return Set.SingleOrDefault(e => e.ID == id);
-        }        
+		      
     }
 <# 
     }
