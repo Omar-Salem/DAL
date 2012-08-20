@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Linq.Expressions;
-using System.Data.Entity;
 using System.Data.Objects;
 using System.Data;
 
@@ -13,31 +11,32 @@ namespace DAL
     IGenericRepository<T>
         where T : class
     {
+
+        #region Member Variables
+
         private readonly ObjectContext _context;
-        private readonly IObjectSet<T> _set;
+        private readonly IObjectSet<T> _set; 
+
+        #endregion
+
+        #region Constructor
 
         public GenericRepository(ObjectContext objectContext)
         {
             _context = objectContext;
             _set = _context.CreateObjectSet<T>();
-        }
+        } 
 
-        public ObjectContext Context
-        {
-            get { return _context; }
-        }
+        #endregion
 
-        public IObjectSet<T> Set
-        {
-            get { return _set; }
-        }
+        #region IGenericRepository
 
         public virtual IEnumerable<T> GetAll()
         {
             return _set;
         }
 
-        public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return _set.Where(predicate);
         }
@@ -56,6 +55,8 @@ namespace DAL
         public virtual void Delete(T entity)
         {
             _set.DeleteObject(entity);
-        }
+        } 
+
+        #endregion
     }
 }
