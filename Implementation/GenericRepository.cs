@@ -35,6 +35,11 @@ namespace DAL
         {
             return _set;
         }
+		
+		public T Single(Expression<Func<T, bool>> predicate)
+        {
+            return _set.SingleOrDefault<T>(predicate);
+        }
 
         public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {

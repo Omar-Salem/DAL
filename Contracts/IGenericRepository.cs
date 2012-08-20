@@ -10,6 +10,8 @@ namespace DAL
     {
 
         IEnumerable<T> GetAll();
+		
+		T Single(Expression<Func<T, bool>> predicate);
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
 
