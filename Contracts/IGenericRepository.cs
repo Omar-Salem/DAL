@@ -8,7 +8,6 @@ namespace DAL
 {
     public interface IGenericRepository<T> where T : class
     {
-
         IEnumerable<T> GetAll();
 		
 		T Single(Expression<Func<T, bool>> predicate);

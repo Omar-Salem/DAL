@@ -58,7 +58,7 @@ namespace DAL
 
         #endregion
 
-        #region Public Properties
+        #region IUnitOfWork
 <#
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
