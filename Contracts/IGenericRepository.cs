@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Linq.Expressions;
+using System.Data.Objects;
 
 namespace DAL
 {
     public interface IGenericRepository<T> where T : class
     {
+        public ObjectContext Context { get; }
+
         IEnumerable<T> GetAll();
-		
-		T Single(Expression<Func<T, bool>> predicate);
+
+        T Single(Expression<Func<T, bool>> predicate);
 
         IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate);
 

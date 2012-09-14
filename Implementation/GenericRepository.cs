@@ -15,7 +15,7 @@ namespace DAL
         #region Member Variables
 
         private readonly ObjectContext _context;
-        private readonly IObjectSet<T> _set; 
+        private readonly IObjectSet<T> _set;
 
         #endregion
 
@@ -25,18 +25,20 @@ namespace DAL
         {
             _context = objectContext;
             _set = _context.CreateObjectSet<T>();
-        } 
+        }
 
         #endregion
 
         #region IGenericRepository
 
+        public ObjectContext Context { get { return _context; } }
+
         public virtual IEnumerable<T> GetAll()
         {
             return _set;
         }
-		
-		public T Single(Expression<Func<T, bool>> predicate)
+
+        public T Single(Expression<Func<T, bool>> predicate)
         {
             return _set.SingleOrDefault<T>(predicate);
         }
@@ -60,7 +62,7 @@ namespace DAL
         public virtual void Delete(T entity)
         {
             _set.DeleteObject(entity);
-        } 
+        }
 
         #endregion
     }
