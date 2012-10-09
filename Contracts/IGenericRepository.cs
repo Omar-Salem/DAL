@@ -7,7 +7,7 @@ namespace DAL
 {
     public interface IGenericRepository<T> where T : class
     {
-        public ObjectContext Context { get; }
+        ObjectContext Context { get; }
 
         IEnumerable<T> GetAll();
 
