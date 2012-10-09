@@ -1,4 +1,4 @@
-﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ template language="C#" debug="false" hostspecific="true"#>
 <#@ include file="EF.Utility.CS.ttinclude"#>
 <#@ output extension=".cs"#>
 <#
@@ -34,7 +34,7 @@ namespace DAL
         var interfaceName = char.ToUpper(elementName[0]) + elementName.Substring(1);
 #>
 
-    public partial interface I<#=interfaceName#>Repository : IGenericRepository<<#=Code.Escape(entitySet.ElementType)#>>
+    public partial interface I<#=interfaceName#>Repository : IGenericRepository<<#=Code.Escape(container)#>,<#=Code.Escape(entitySet.ElementType)#>>
     {
     }
 <# 
