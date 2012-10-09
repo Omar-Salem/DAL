@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Data.Objects;
 
 namespace DAL
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<C, T>
+        where T : class
+        where C : ObjectContext, new()
     {
-        ObjectContext Context { get; }
+        C Context { get; }
 
         IEnumerable<T> GetAll();
 
