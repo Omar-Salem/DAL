@@ -66,5 +66,36 @@ namespace DAL
         }
 
         #endregion
+
+#region Private Methods
+
+        private IEnumerable<TEntity> LoadNavigationFields<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            foreach (TEntity entity in entities)
+            {
+                PerformEagerLoading<TEntity>(entity, this.Context);
+            }
+            return entities;
+        }
+
+        private TEntity LoadNavigationFields<TEntity>(TEntity entity) where TEntity : class
+        {
+            PerformEagerLoading<TEntity>(entity, this.Context);
+            return entity;
+        }
+
+        private void PerformEagerLoading<TEntity>(TEntity entity, ObjectContext context) where TEntity : class
+        {
+            PropertyInfo[] properties = typeof(TEntity).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                if (property.PropertyType.IsClass && property.PropertyType != typeof(String) && property.PropertyType != typeof(ObjectChangeTracker))
+                {
+                    context.LoadProperty(entity, property.Name);
+                }
+            }
+        }
+
+        #endregion
     }
 }
