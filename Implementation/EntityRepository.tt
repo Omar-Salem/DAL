@@ -20,7 +20,7 @@ if (container == null)
     return string.Empty;
 }
 #>
-namespace DAL
+namespace <#=ModelNamespace#>
 {
     using System.ComponentModel.Composition;
     using Entities;
