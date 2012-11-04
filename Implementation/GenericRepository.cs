@@ -86,13 +86,10 @@ namespace DAL
 
         private void PerformEagerLoading<TEntity>(TEntity entity, ObjectContext context) where TEntity : class
         {
-            PropertyInfo[] properties = typeof(TEntity).GetProperties();
+            var properties = typeof(TEntity).GetProperties().Where(p => p.PropertyType.IsClass && p.PropertyType != typeof(String) && p.PropertyType != typeof(ObjectChangeTracker));
             foreach (PropertyInfo property in properties)
             {
-                if (property.PropertyType.IsClass && property.PropertyType != typeof(String) && property.PropertyType != typeof(ObjectChangeTracker))
-                {
-                    context.LoadProperty(entity, property.Name);
-                }
+                context.LoadProperty(entity, property.Name);
             }
         }
 
