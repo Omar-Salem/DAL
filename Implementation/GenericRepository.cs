@@ -67,7 +67,7 @@ namespace DAL
 
         #endregion
 
-#region Private Methods
+        #region Private Methods
 
         private IEnumerable<TEntity> LoadNavigationFields<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
         {
@@ -87,6 +87,7 @@ namespace DAL
         private void PerformEagerLoading<TEntity>(TEntity entity, ObjectContext context) where TEntity : class
         {
             var properties = typeof(TEntity).GetProperties().Where(p => p.PropertyType.IsClass && p.PropertyType != typeof(String) && p.PropertyType != typeof(ObjectChangeTracker));
+            
             foreach (PropertyInfo property in properties)
             {
                 context.LoadProperty(entity, property.Name);
