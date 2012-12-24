@@ -57,7 +57,6 @@ namespace DAL
 
         public virtual void Update(T entity)
         {
-            _set.Attach(entity);
             _context.ObjectStateManager.ChangeObjectState(entity, EntityState.Modified);
         }
 
