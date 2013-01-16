@@ -1,10 +1,10 @@
-﻿
+
 namespace DAL
 {
     using System;
 	using Entities;
 
-    public partial interface ICustomerRepository : IGenericRepository<customer>
+    public partial interface ICustomerRepository : IGenericRepository<TestContext,customer>
     {
     }
 }

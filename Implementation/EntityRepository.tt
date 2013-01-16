@@ -34,7 +34,7 @@ namespace <#=ModelNamespace#>
 #>
 
     [Export(typeof(I<#=interfaceName#>Repository)), PartCreationPolicy(CreationPolicy.NonShared)]
-    public partial class <#=Code.Escape(entitySet.ElementType)#>Repository : GenericRepository<<#=Code.Escape(container)#>,<#=Code.Escape(entitySet.ElementType)#>>, I<#=interfaceName#>Repository
+    public partial class <#=Code.Escape(entitySet.ElementType)#>Repository : GenericRepository<<#=Code.Escape(entitySet.ElementType)#>>, I<#=interfaceName#>Repository
     {
         [ImportingConstructor]
         public <#=Code.Escape(entitySet.ElementType)#>Repository(<#=Code.Escape(container)#> context)

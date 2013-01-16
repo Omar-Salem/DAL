@@ -27,7 +27,7 @@ namespace DAL
 
         #endregion
 
-        #region Public Properties
+        #region IUnitOfWork
  
         public ICustomerRepository customerRepository
         {

@@ -5,12 +5,9 @@ using System.Data.Objects;
 
 namespace DAL
 {
-    public interface IGenericRepository<C, T>
+    public interface IGenericRepository<T>
         where T : class
-        where C : ObjectContext, new()
     {
-        C Context { get; }
-
         IEnumerable<T> GetAll();
 
         T Single(Expression<Func<T, bool>> predicate);

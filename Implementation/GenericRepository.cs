@@ -8,22 +8,21 @@ using System.Reflection;
 
 namespace DAL
 {
-    public abstract class GenericRepository<C, T> :
-    IGenericRepository<C, T>
+    public abstract class GenericRepository< T> :
+    IGenericRepository< T>
         where T : class
-        where C : ObjectContext, new()
     {
 
         #region Member Variables
 
-        private readonly C _context;
+        private readonly ObjectContext _context;
         private readonly IObjectSet<T> _set;
 
         #endregion
 
         #region Constructor
 
-        public GenericRepository(C objectContext)
+        public GenericRepository(ObjectContext objectContext)
         {
             _context = objectContext;
             _set = _context.CreateObjectSet<T>();
@@ -32,8 +31,6 @@ namespace DAL
         #endregion
 
         #region IGenericRepository
-
-        public C Context { get { return _context; } }
 
         public virtual IEnumerable<T> GetAll()
         {
